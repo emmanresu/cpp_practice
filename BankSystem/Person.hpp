@@ -3,6 +3,9 @@
 #include <iostream>
 #include "hasher.hpp"
 
+#ifndef PERSON_HPP
+#define PERSON_HPP
+
 class Person {
 private:
     std::string accountNum;
@@ -12,11 +15,12 @@ private:
     double bal = 0;
     
 public:
+    Person(std::string lastName, std::string firstName, std::string midName, 
+            std::string pass, std::string accNum) : lName(std::move(lastName)), 
+            fName(std::move(firstName)), mName(std::move(midName)), 
+            pin(std::move(pass)), accountNum(std::move(accNum)) {}
 
-    Person(std::string lastName, std::string firstName, std::string midName, std::string pass) : 
-            lName(lastName), fName(firstName), mName(midName), pin(pass) {}
-
-    Person() : lName("unknown"), fName("unknown"), mName("unknown") {}
+    Person() {}
 
     void deposit(double value) {
         bal += value;
@@ -36,12 +40,6 @@ public:
             return true;
         }
     }
-    void viewTransaction() const {
-        for (auto t : transac) {
-            std::cout << t << '\n';
-        }
-    }
-
     std::string getLName() const {
         return lName;
     }
@@ -54,4 +52,11 @@ public:
     double getBal() const {
         return bal;
     }
+    void viewTransaction() const {
+        for (auto t : transac) {
+            std::cout << t << '\n';
+        }
+    }
 };
+
+#endif

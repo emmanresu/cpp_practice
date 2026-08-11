@@ -20,7 +20,7 @@ int main() {
                     << "--------------------------------------\n"
                     << "Command: ";
 
-        int option;
+        int option{};
         std::cin >> option;
         auto it = find(commands.begin(), commands.end(), option);
         if (it == commands.end()) {
@@ -47,7 +47,11 @@ int main() {
                     break;
                 }
                 case 2: {
+                    break;
                     
+                }
+                case 3: {
+                    break;
                 }
 
             }
