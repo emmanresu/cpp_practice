@@ -1,27 +1,31 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <limits>
+#include <cctype>
+#include <algorithm>
 #include "CreateAccount.hpp"
 #include "Person.hpp"
-#include "Hasher.hpp"
 
-void CreateAccount() {
-    std::string value{};
-    std::string firstName = std::move(getName("First name", value));
-    std::string lastName = std::move(getName("Last name", value));
-    std::string midName = std::move(getName("Middle name", value));
-    std::string pin = std::move(createPin(value));
-    std::string accountNumber = std::move(createAccNum(value));
-
-    Person person { firstName, lastName, midName, pin, accountNumber };
-
-    // push this to the database
+bool isLettersAndSpaces(const std::string& val) {
+    if (val.empty()) {
+        return false;
+    }
+    return std::all_of(val.begin(), val.end(), [](unsigned char c){
+        return std::isalpha(c) || std::isspace(c);
+    });
 }
 
-std::string getName(std::string&& nameType, std::string text) {
+void clearInputBuffer() {
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+std::string getName(std::string&& nameType) {
+    std::string text{};
     while (true) {
         std::cout << "Enter " << nameType << ": ";
         std::getline(std::cin, text);
-        if (text == " " || text.size() == 0) {
+        if (!isLettersAndSpaces(text) || text == "") {
             std::cout << nameType << " must not be empty. Try again\n";
             continue;
         }
@@ -30,7 +34,8 @@ std::string getName(std::string&& nameType, std::string text) {
     return text;
 }
 
-std::string createPin(std::string pin) {
+std::string createPin() {
+    std::string pin{};
     while (true) {
         std::cout << "Enter 4 digit pin: ";
         std::cin >> pin;
@@ -43,9 +48,12 @@ std::string createPin(std::string pin) {
     return pin;
 }
 
-std::string createAccNum(std::string num) {
+// account number collision / same account number can occur
+std::string createAccNum() {
+    std::string num{};
     while (true) {
         std::cout << "Enter account number: ";
+        std::cin >> num;
         if (num.size() != 7) {
             std::cout << "Invalid account number. Try again\n";
             continue;
@@ -53,4 +61,28 @@ std::string createAccNum(std::string num) {
         break;
     }
     return num;
+}
+
+void CreateAccount() {
+    // this can be improved
+    clearInputBuffer();
+    std::string firstName = getName("First name");
+    std::string lastName = getName("Last name");
+    std::string midName = getName("Middle name");
+    std::string pin = createPin();
+    std::string accountNumber = createAccNum();
+
+    Person person { firstName, lastName, midName, pin, accountNumber };
+
+    // push this to the database
+
+    std::ofstream file("database.csv", std::ios::app);
+    if (!file.is_open()) {
+        std::cout << "File cannot be accessed.\n";
+    } else {
+        file << person.getAccNum() << ',' << person.getLName() << ','
+                << person.getFName() << ',' << person.getMName() << ','
+                << person.getPin() << '\n';
+    }
+    file.close();
 }

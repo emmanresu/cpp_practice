@@ -5,5 +5,6 @@ void CreateAccountInterface() {
     std::cout << "--------------------------------------\n"
                 << "\tCREATE ACCOUNT\n";
     CreateAccount();
-    // read latest from database 
+    std::cout << "--------------------------------------\n"
+                << "ACCOUNT CREATED SUCCESSFULLY\n";
 }

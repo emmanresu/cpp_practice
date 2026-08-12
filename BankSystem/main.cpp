@@ -3,14 +3,17 @@
 #include <string>
 #include <utility>
 #include <algorithm>
+#include <limits>
 #include "Person.hpp"
 #include "Hasher.hpp"
+#include "CreateAccountInterface.hpp"
 
 int main() {
     std::vector<Person> database;
     std::vector<int> commands {1, 2, 3};
-
-    while (true) {
+    bool systemOnline = true;
+    int option{};
+    while (systemOnline) {
         std::cout << "--------------------------------------\n"
                     << "\tBANK ACCOUNT SYSTEM\n"
                     << "Enter command:\n"
@@ -20,12 +23,14 @@ int main() {
                     << "--------------------------------------\n"
                     << "Command: ";
 
-        int option{};
         std::cin >> option;
+        
         auto it = find(commands.begin(), commands.end(), option);
         if (it == commands.end()) {
-            std::cout << "UNKOWN COMMAND. TRY AGAIN\n\n";
-            // std::cin.clear();
+            std::cout << "UNKNOWN COMMAND. TRY AGAIN\n\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         } else {
             switch (option) {
                 case 1: {
@@ -47,11 +52,12 @@ int main() {
                     break;
                 }
                 case 2: {
+                    CreateAccountInterface();
                     break;
-                    
                 }
                 case 3: {
-                    break;
+                    std::cout << "Console terminated.\n";
+                    systemOnline = false;
                 }
 
             }

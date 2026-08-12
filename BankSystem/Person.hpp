@@ -12,19 +12,17 @@ private:
     std::string lName, fName, mName;
     std::vector<std::string> transac;
     std::string pin;
-    double bal = 0;
+    double bal { 0 };
     
 public:
     Person(std::string lastName, std::string firstName, std::string midName, 
             std::string pass, std::string accNum) : lName(std::move(lastName)), 
             fName(std::move(firstName)), mName(std::move(midName)), 
-            pin(std::move(pass)), accountNum(std::move(accNum)) {}
+            pin(std::move(hash(pass))), accountNum(std::move(accNum)) {}
 
     Person() {}
 
-    void deposit(double value) {
-        bal += value;
-    }
+    void deposit(double value) { bal += value; }
     bool withdraw(double value) {
         if (value <= bal) {
             bal -= value;
@@ -40,18 +38,12 @@ public:
             return true;
         }
     }
-    std::string getLName() const {
-        return lName;
-    }
-    std::string getFName() const {
-        return fName;
-    }
-    std::string getMName() const {
-        return mName;
-    }
-    double getBal() const {
-        return bal;
-    }
+    std::string getLName() const { return lName; }
+    std::string getFName() const { return fName; }
+    std::string getMName() const { return mName; }
+    std::string getAccNum() const { return accountNum; }
+    std::string getPin() const { return pin; }
+    double getBal() const { return bal; }
     void viewTransaction() const {
         for (auto t : transac) {
             std::cout << t << '\n';
