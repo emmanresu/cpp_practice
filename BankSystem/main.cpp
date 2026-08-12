@@ -4,6 +4,7 @@
 #include <utility>
 #include <algorithm>
 #include <limits>
+#include <unordered_map>
 #include "Person.hpp"
 #include "Hasher.hpp"
 #include "CreateAccountInterface.hpp"
@@ -24,7 +25,7 @@ int main() {
                     << "Command: ";
 
         std::cin >> option;
-        
+
         auto it = find(commands.begin(), commands.end(), option);
         if (it == commands.end()) {
             std::cout << "UNKNOWN COMMAND. TRY AGAIN\n\n";
