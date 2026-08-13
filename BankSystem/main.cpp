@@ -8,6 +8,7 @@
 #include "Person.hpp"
 #include "Hasher.hpp"
 #include "CreateAccountInterface.hpp"
+#include "AccountInterface.hpp"
 
 int main() {
     std::vector<Person> database;
@@ -35,21 +36,7 @@ int main() {
         } else {
             switch (option) {
                 case 1: {
-                    std::cout << "last name: ";
-                    std::string lName;
-                    std::cin >> lName;
-
-                    std::cout << "pin: ";
-                    std::string pin;
-                    std::cin >> pin;
-
-                    auto it = std::find_if(database.begin(), database.end(), [lName](const Person& p) {
-                        return p.getFName() == lName;
-                    });
-
-                    if (it != database.end() && it->matchPin(pin)) {
-                        std::cout << "Weclome " << it->getLName() << '\n';
-                    }
+                    AccountInterface();
                     break;
                 }
                 case 2: {

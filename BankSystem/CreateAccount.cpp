@@ -71,8 +71,9 @@ void CreateAccount() {
     std::string midName = getName("Middle name");
     std::string pin = createPin();
     std::string accountNumber = createAccNum();
+    double bal = 0;
 
-    Person person { firstName, lastName, midName, pin, accountNumber };
+    Person person { accountNumber, firstName, lastName, midName, pin, bal };
 
     // push this to the database
 
@@ -82,7 +83,7 @@ void CreateAccount() {
     } else {
         file << person.getAccNum() << ',' << person.getLName() << ','
                 << person.getFName() << ',' << person.getMName() << ','
-                << person.getPin() << '\n';
+                << person.getPin() << ','<< person.getBal() << '\n';
     }
     file.close();
 }
