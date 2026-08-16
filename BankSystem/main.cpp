@@ -19,7 +19,7 @@ int main() {
         std::cout << "--------------------------------------\n"
                     << "\tBANK ACCOUNT SYSTEM\n"
                     << "Enter command:\n"
-                    << "1 - Enter name and pin\n"
+                    << "1 - Login\n"
                     << "2 - Create account\n"
                     << "3 - Exit\n"
                     << "--------------------------------------\n"
@@ -46,6 +46,7 @@ int main() {
                 case 3: {
                     std::cout << "Console terminated.\n";
                     systemOnline = false;
+                    break;
                 }
 
             }

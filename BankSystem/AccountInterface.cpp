@@ -16,8 +16,25 @@ void AccountInterface() {
     while (active) {
         std::cout << "Enter command:\n" << "1 - Deposit cash\n"
                     << "2 - Withdraw cash\n" << "3 - View balance\n"
-                    << "4 - Exit\n";
-        std::string command;
+                    << "4 - Log out\n";
+        int command{};
         std::cin >> command;
+        switch (command) {
+            case 1: {
+              break;  
+            }
+            case 2: {
+                break;
+            }
+            case 3: {
+                break;
+            }
+            case 4: {
+                std::cout << "--------------------------------------\n"
+                            << "LOGGED OUT SUCCESSFULLY\n";
+                active = false;
+                break;
+            }
+        }
     }
 }
