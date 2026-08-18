@@ -26,7 +26,13 @@ int main() {
                     << "Command: ";
 
         std::cin >> option;
-
+        char nextChar = std::cin.peek();
+        if (nextChar != '\n') {
+            std::cout << "UKNOWN COMMAND. TRY AGAIN\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
         auto it = find(commands.begin(), commands.end(), option);
         if (it == commands.end()) {
             std::cout << "UNKNOWN COMMAND. TRY AGAIN\n\n";

@@ -36,7 +36,6 @@ void AccountInterface() {
                 if (!person.deposit(amount)) {
                     std::cout << "Invalid amount.";
                 } else {
-                    // person.deposit(amount);
                     std::cout << "\n--------------------------------------\n"
                                 "DEPOSIT SUCCESS.\n"
                                 << "Current balance: "
