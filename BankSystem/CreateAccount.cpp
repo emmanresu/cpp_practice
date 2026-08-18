@@ -73,7 +73,7 @@ void CreateAccount() {
     std::string accountNumber = createAccNum();
     double bal = 0;
 
-    Person person { accountNumber, firstName, lastName, midName, pin, bal };
+    Person person { accountNumber, lastName, firstName, midName, pin, bal };
 
     // push this to the database
 
