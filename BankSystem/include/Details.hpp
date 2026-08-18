@@ -1,6 +1,7 @@
 #ifndef DETAILS_HPP
 #define DETAILS_HPP
 
+#include <unordered_map>
 #include <string>
 
 struct Details {
@@ -9,5 +10,7 @@ struct Details {
     std::string pin;
     double bal;
 };
+
+using Database = std::unordered_map<std::string, Details>;
 
 #endif

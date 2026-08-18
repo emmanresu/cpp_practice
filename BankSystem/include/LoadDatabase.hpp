@@ -5,8 +5,6 @@
 #include <string>
 #include "Details.hpp"
 
-using Database = std::unordered_map<std::string, Details>;
-
 Database LoadDatabase();
 
 #endif

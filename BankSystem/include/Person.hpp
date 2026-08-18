@@ -26,9 +26,16 @@ public:
 
     Person() {}
 
-    void deposit(double value) { bal += value; }
+    bool deposit(double value) {
+        if(value < 0) {
+            return 0;
+        } else {
+            bal += value;
+            return 1; 
+        }
+    }
     bool withdraw(double value) {
-        if (value <= bal) {
+        if (value <= bal || value < 0) {
             bal -= value;
             return 1;
         } else {
