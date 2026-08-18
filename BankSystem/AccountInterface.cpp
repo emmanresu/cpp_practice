@@ -15,9 +15,13 @@ void AccountInterface() {
                 << "--------------------------------------\n";
     bool active = true;
     while (active) {
-        std::cout << "Enter command:\n" << "1 - Deposit cash\n"
-                    << "2 - Withdraw cash\n" << "3 - View balance\n"
-                    << "4 - Log out\n";
+        std::cout << "Enter command:\n" 
+                    << "1 - Deposit cash\n"
+                    << "2 - Withdraw cash\n" 
+                    << "3 - View balance\n"
+                    << "4 - Log out\n"
+                    << "--------------------------------------\n"
+                    << "Command: ";;
         int command{};
         std::cin >> command;
         switch (command) {
@@ -28,6 +32,9 @@ void AccountInterface() {
                 break;
             }
             case 3: {
+                std::cout << "--------------------------------------\n"
+                            << "Current balance: " << person.getBal()
+                            << "\n--------------------------------------\n";
                 break;
             }
             case 4: {
