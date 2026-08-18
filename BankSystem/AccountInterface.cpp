@@ -1,12 +1,13 @@
 #include <iostream>
-
+#include "LoadDatabase.hpp"
 #include "Person.hpp"
 #include "VerifyAccount.hpp"
 
 void AccountInterface() {
+    Database db = LoadDatabase();
     std::cout << "--------------------------------------\n"
                 << "\tLOGIN TO ACCOUNT\n";
-    Person person = Account();
+    Person person = Account(db);
 
     std::cout << "--------------------------------------\n"
                     << "Welcome " << person.getLName() << ", "

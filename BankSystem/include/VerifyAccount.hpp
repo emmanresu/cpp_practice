@@ -2,6 +2,6 @@
 #ifndef VERIFYACCOUNT_HPP
 #define VERIFYACCOUNT_HPP
 
-Person Account();
+Person Account(Database& db);
 
 #endif
