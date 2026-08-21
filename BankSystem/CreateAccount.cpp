@@ -77,7 +77,9 @@ void CreateAccount() {
 
     // push this to the database
 
-    std::ofstream file("database.csv", std::ios::app);
+    // std::ios::app ensures append at end 
+    // std::ofstream default applies std::ios::trunc which deletes data in the file when opening alongside std::ios::out
+    std::ofstream file("database.csv", std::ios::app); 
     if (!file.is_open()) {
         std::cout << "File cannot be accessed.\n";
     } else {

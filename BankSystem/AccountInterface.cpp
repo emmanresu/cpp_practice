@@ -2,6 +2,7 @@
 #include "LoadDatabase.hpp"
 #include "Person.hpp"
 #include "VerifyAccount.hpp"
+#include "UpdateDB.hpp"
 
 void AccountInterface() {
     Database db = LoadDatabase();
@@ -73,6 +74,7 @@ void AccountInterface() {
                 std::cout << "--------------------------------------\n"
                             << "LOGGED OUT SUCCESSFULLY\n";
                 active = false;
+                UpdateDB(db, person);
                 break;
             }
         }
