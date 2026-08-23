@@ -17,7 +17,7 @@ void UpdateDB(Database& db, Person& person) {
                     << person.getLName() << ','
                     << person.getFName() << ','
                     << person.getMName() << ','
-                    << person.getPin() << ','
+                    << it->second.pin << ','
                     << person.getBal() << '\n';
         } else {
             file << it->second.accountNum << ','
