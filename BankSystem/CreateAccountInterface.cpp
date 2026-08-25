@@ -4,7 +4,14 @@
 void CreateAccountInterface() {
     std::cout << "--------------------------------------\n"
                 << "\tCREATE ACCOUNT\n";
-    CreateAccount();
-    std::cout << "--------------------------------------\n"
+    bool created = CreateAccount();
+
+    if (!created) {
+        std::cout << "--------------------------------------\n"
+                << "EXITING TO MAIN SCREEN\n";
+    } else {
+        std::cout << "--------------------------------------\n"
                 << "ACCOUNT CREATED SUCCESSFULLY\n";
+    }
+    
 }

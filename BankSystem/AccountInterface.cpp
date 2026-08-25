@@ -5,6 +5,8 @@
 #include "UpdateDB.hpp"
 
 void AccountInterface() {
+    bool control = true;
+    
     Database db = LoadDatabase();
     std::cout << "--------------------------------------\n"
                 << "\tLOGIN TO ACCOUNT\n";

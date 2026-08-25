@@ -28,7 +28,7 @@ std::string getName(std::string&& nameType) {
         if (!isLettersAndSpaces(text) || text == "") {
             std::cout << nameType << " must not be empty. Try again\n";
             continue;
-        }
+        } 
         break;
     }
     return text;
@@ -63,14 +63,44 @@ std::string createAccNum() {
     return num;
 }
 
-void CreateAccount() {
+void exit(std::string& var, bool& control) {
+    if (var == "exit") {
+        control = false;
+    }
+}
+
+bool CreateAccount() {
     // this can be improved
+    bool control = true;
+
     clearInputBuffer();
     std::string firstName = getName("First name");
+    exit(firstName, control);
+    if (!control) {
+        return false;
+    }
+
     std::string lastName = getName("Last name");
+    exit(lastName, control);
+    if (!control) {
+        return false;
+    }
+
     std::string midName = getName("Middle name");
+    exit(midName, control);
+    if (!control) {
+        return false;
+    }
+
     std::string pin = createPin();
+    exit(pin, control);
+    if (!control) {
+        return false;
+    }
+
     std::string accountNumber = createAccNum();
+    exit(accountNumber, control);
+
     double bal = 0;
 
     Person person { accountNumber, lastName, firstName, midName, pin, bal };
@@ -88,4 +118,5 @@ void CreateAccount() {
                 << person.getPin() << ','<< person.getBal() << '\n';
     }
     file.close();
+    return true;
 }
