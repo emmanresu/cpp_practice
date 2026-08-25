@@ -34,7 +34,6 @@ Person Account(Database& db) {
             std::cout << "Account number does not exist.\n";
             continue;
         }
-
         std::string pinInput;
         std::cout << "Enter pin: ";
         std::cin >> pinInput;

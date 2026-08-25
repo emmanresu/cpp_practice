@@ -1,5 +1,6 @@
 #include <unordered_map>
 #include <string>
+#include <iostream>
 #include <fstream>
 #include "Details.hpp"
 #include "LoadDatabase.hpp"
