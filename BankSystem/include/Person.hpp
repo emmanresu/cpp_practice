@@ -60,6 +60,12 @@ public:
     //         std::cout << t << '\n';
     //     }
     // }
+    void setAccountNum(std::string val) { accountNum = val; }
+    void setLName(std::string val) { lName = val; }
+    void setFName(std::string val) { fName = val; }
+    void setMName(std::string val) { mName = val; }
+    void setPin(std::string val) { pin = val; }
+    void setBal(double val) { bal = val; }
 };
 
 #endif

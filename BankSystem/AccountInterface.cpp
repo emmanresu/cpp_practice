@@ -12,7 +12,8 @@ void AccountInterface() {
     Person person;
     Account(db, person, control);
     if (!control) {
-        std::cout << "EXITING TO MAIN SCREEN\n";
+        std::cout << "--------------------------------------\n"
+                    << "EXITING TO MAIN SCREEN\n";
         return;
     }
 

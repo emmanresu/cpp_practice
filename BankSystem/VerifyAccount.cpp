@@ -56,8 +56,15 @@ void Account(Database& db, Person& person, bool& control) {
         std::cout << "Login success.\n";
         active = false;
     }
-    Person person { db[acc].accountNum, db[acc].lName, 
-                        db[acc].fName, db[acc].mName, 
-                        db[acc].pin, db[acc].bal };
-    return person;
+    // person { db[acc].accountNum, db[acc].lName, 
+    //                     db[acc].fName, db[acc].mName, 
+    //                     db[acc].pin, db[acc].bal };
+    person.setAccountNum(db[acc].accountNum);
+    person.setLName(db[acc].lName);
+    person.setFName(db[acc].fName);
+    person.setMName(db[acc].accountNum);
+    person.setPin(db[acc].pin);
+    person.setBal(db[acc].bal);
+
+    control = true;
 }
