@@ -6,11 +6,15 @@
 
 void AccountInterface() {
     bool control = true;
-    
+
     Database db = LoadDatabase();
-    std::cout << "--------------------------------------\n"
-                << "\tLOGIN TO ACCOUNT\n";
-    Person person = Account(db);
+    
+    Person person;
+    Account(db, person, control);
+    if (!control) {
+        std::cout << "EXITING TO MAIN SCREEN\n";
+        return;
+    }
 
     std::cout << "--------------------------------------\n"
                     << "Welcome " << person.getLName() << ", "

@@ -21,22 +21,32 @@ bool verifyPin(std::string& pinInput, std::string& anInput, Database& database) 
     }
 }
 
-Person Account(Database& db) {
+void Account(Database& db, Person& person, bool& control) {
     // Database db = LoadDatabase();
     std::string acc;
     bool active = true;
+
     while (active) {
         std::string anInput;
         std::cout << "Enter account number: ";
         std::cin >> anInput;
+        if (anInput == "exit") {
+            control = false;
+            return;
+        }
         bool accNum = verifyAccNum(anInput, db);
         if (!accNum) {
             std::cout << "Account number does not exist.\n";
             continue;
         }
+
         std::string pinInput;
         std::cout << "Enter pin: ";
         std::cin >> pinInput;
+        if (pinInput == "exit") {
+            control = false;
+            return;
+        }
         bool pin = verifyPin(pinInput, anInput, db);
         if (!pin) {
             std::cout << "Incorrect pin. Try again.\n";
