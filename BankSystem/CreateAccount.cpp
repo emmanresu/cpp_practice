@@ -101,9 +101,10 @@ bool CreateAccount() {
     std::string accountNumber = createAccNum();
     exit(accountNumber, control);
 
-    double bal = 0;
+    double bal { 0.0 };
 
-    Person person { accountNumber, lastName, firstName, midName, pin, bal };
+    // Person person { accountNumber, lastName, firstName, midName, pin, bal };
+    Person person (accountNumber, lastName, firstName, midName, pin, bal);
 
     // push this to the database
 

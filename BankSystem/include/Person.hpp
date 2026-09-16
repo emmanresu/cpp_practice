@@ -28,18 +28,18 @@ public:
 
     bool deposit(double value) {
         if(value < 0) {
-            return 0;
+            return false;
         } else {
             bal += value;
-            return 1; 
+            return true; 
         }
     }
     bool withdraw(double value) {
-        if (value <= bal || value < 0) {
+        if (bal >= value && value > 0) {
             bal -= value;
-            return 1;
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
     bool matchPin(std::string& val) {
