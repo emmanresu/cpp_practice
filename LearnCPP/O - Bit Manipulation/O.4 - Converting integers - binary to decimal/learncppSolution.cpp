@@ -1,6 +1,7 @@
 #ifndef LEARNCPPSOLUTION_CPP
 #define LEARNCPPSOLUTION_CPP
 
+#include <chrono>
 #include <iostream>
 #include "learncppSolution.hpp"
 
@@ -29,7 +30,11 @@ void learncppSolution() {
     int x{};
     std::cin >> x;
 
+    auto start { std::chrono::steady_clock::now() };
     print8BitBinary(x);
+    auto end { std::chrono::steady_clock::now() };
+    auto elapsed { std::chrono::duration_cast<std::chrono::nanoseconds>(end - start) };
+    std::cout << "\ntime elapsed: " << elapsed.count() << " nanos";
 
     std::cout << '\n';
 

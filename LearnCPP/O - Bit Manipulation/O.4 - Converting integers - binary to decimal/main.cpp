@@ -33,11 +33,13 @@ void mySolution() {
 
     std::cout << "Decimal: " << input << '\n'
             << "Binary:  " << bits << '\n';
-    std::cout << elapsed.count() << " nanos\n";
+    std::cout << "time elapsed: " << elapsed.count() << " nanos";
 }
 
 int main() {
     mySolution();
+     
+    // learncppSolution();
 
     return 0;
 }
