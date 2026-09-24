@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <string>
 #include "learncppSolution.hpp"
+#include <chrono>
 
 void convert(std::string& binary, std::uint8_t* refs, int numberInput) {
     for (auto i = binary.begin(); i != binary.end(); ++i) {
@@ -25,10 +26,14 @@ void mySolution() {
     int input {};
     std::cin >> input;
 
+    auto start { std::chrono::steady_clock::now() };
     convert(bits, &refs[0], input);
+    auto end { std::chrono::steady_clock::now() };
+    auto elapsed { std::chrono::duration_cast<std::chrono::nanoseconds>(end - start) };
 
     std::cout << "Decimal: " << input << '\n'
-            << "Binary:  " << bits;
+            << "Binary:  " << bits << '\n';
+    std::cout << elapsed.count() << " nanos\n";
 }
 
 int main() {
