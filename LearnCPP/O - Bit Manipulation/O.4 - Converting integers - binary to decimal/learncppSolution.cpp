@@ -5,7 +5,7 @@
 #include <iostream>
 #include "learncppSolution.hpp"
 
-inline void printBit(int x, int pow)
+void printBit(int x, int pow)
 {
     std::cout << ((x / pow) % 2);
 }
@@ -25,7 +25,7 @@ void print8BitBinary(int x)
     printBit(x, 1);
 }
 
-inline void learncppSolution() {
+void learncppSolution() {
     std::cout << "Enter an integer between 0 and 255: ";
     int x{};
     std::cin >> x;
@@ -39,5 +39,6 @@ inline void learncppSolution() {
     std::cout << '\n';
 
 }
+
 
 #endif
