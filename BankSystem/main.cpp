@@ -42,20 +42,16 @@ int main() {
         } else {
             std::cin.clear();
             switch (option) {
-                case 1: {
+                case 1:
                     AccountInterface();
                     break;
-                }
-                case 2: {
+                case 2:
                     CreateAccountInterface();
                     break;
-                }
-                case 3: {
+                case 3:
                     std::cout << "Console terminated.\n";
                     systemOnline = false;
                     break;
-                }
-
             }
         }
     }
