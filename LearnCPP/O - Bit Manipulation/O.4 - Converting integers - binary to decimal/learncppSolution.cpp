@@ -3,11 +3,22 @@
 
 #include <chrono>
 #include <iostream>
+#include <vector>
 #include "learncppSolution.hpp"
+
+static std::vector<long long> elapsedVector {}; 
 
 void printBit(int x, int pow)
 {
-    std::cout << ((x / pow) % 2);
+    auto start { std::chrono::steady_clock::now() };
+
+    int res { (x / pow) % 2 };
+
+    auto end { std::chrono::steady_clock::now() };
+    auto elapsed { std::chrono::duration_cast<std::chrono::nanoseconds>(end - start) };
+    elapsedVector.emplace_back(elapsed.count());
+    
+    std::cout << res;
 }
 
 void print8BitBinary(int x)
@@ -30,11 +41,17 @@ void learncppSolution() {
     int x{};
     std::cin >> x;
 
-    auto start { std::chrono::steady_clock::now() };
+    // auto start { std::chrono::steady_clock::now() };
+    std::cout << "binary equivalent: ";
     print8BitBinary(x);
-    auto end { std::chrono::steady_clock::now() };
-    auto elapsed { std::chrono::duration_cast<std::chrono::nanoseconds>(end - start) };
-    std::cout << "\ntime elapsed: " << elapsed.count() << " nanos";
+    // auto end { std::chrono::steady_clock::now() };
+    // auto elapsed { std::chrono::duration_cast<std::chrono::nanoseconds>(end - start) };
+
+    std::cout << "\n\nTime Elapsed:\n";
+    for (auto e : elapsedVector) {
+        std::cout << e << " nanos\n";
+    }
+    // std::cout << "\ntime elapsed: " << elapsed.count() << " nanos";
 
     std::cout << '\n';
 
