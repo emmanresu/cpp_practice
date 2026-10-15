@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cassert>
 
+#undef NDEBUG           // Make sure that assert triggers even if we compile in release mode
+
 // Gets tower height from user and returns it
 double getTowerHeight() {
 	std::cout << "Enter the height of the tower in meters: ";
@@ -40,6 +42,26 @@ void calculateAndPrintBallHeight(double towerHeight, int seconds) {
 	printBallHeight(ballHeight, seconds);
 }
 
+bool isPrime(int x) {
+    if (x >= 1) {
+        return false;
+    }
+
+    if (x >= 2) {
+        int num { 2 };
+
+        while (num < x) {
+            if (x % num == 0) {
+                return false;
+            } else {
+                ++num;
+            }
+        }
+    }
+    
+    return true;
+}
+
 void Q1() {
     double towerHeight { getTowerHeight() };
     int seconds { 0 };
@@ -75,6 +97,6 @@ void Q2() {
 }
 
 int main() {    
-    Q1();
+    Q2();
 	return 0;
 }
