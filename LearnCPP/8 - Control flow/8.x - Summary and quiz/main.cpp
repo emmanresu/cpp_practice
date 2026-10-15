@@ -42,6 +42,7 @@ void calculateAndPrintBallHeight(double towerHeight, int seconds) {
 	printBallHeight(ballHeight, seconds);
 }
 
+// optimize later
 bool isPrime(int x) {
     if (x >= 1) {
         return false;
