@@ -1,6 +1,8 @@
 #include <iostream>
-#include "Random.hpp"
+#include <limits>
 #include <cstddef>
+#include "Random.hpp"
+
 
 void HiLo() {
     std::cout << "Let's play a game. I'm thinking of a number between 1 and 100. You have 7 tries to guess what it is.\n";
@@ -12,8 +14,19 @@ void HiLo() {
     int guess {};
 
     for (int tries { 1 }; tries <= maxTries; ++tries) {
-        std::cout << "Guess #" << tries << ": ";
-        std::cin >> guess;
+        bool validGuess { false };
+        
+        while (!validGuess) {
+            std::cout << "Guess #" << tries << ": ";
+            std::cin >> guess;
+            if (std::cin.fail()) {
+                std::cout << "Invalid guess. Enter numbers from 1 - 100 only.\n";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                validGuess = true;
+            }
+        }
 
         if (guess == randomNumber) {
             std::cout << "Correct! You win!\n";
@@ -24,7 +37,6 @@ void HiLo() {
             std::cout << "Your guess it too low.\n";
         }
     }
-
     std::cout << "Sorry, you lose. The correct number was " << randomNumber << ".\n";
 }
 
@@ -37,5 +49,4 @@ void Q3() {
         std::cin >> play;
     }
     std::cout << "Thank you for playing.\n";
-    
 }
