@@ -5,12 +5,13 @@
 void HiLo() {
     std::cout << "Let's play a game. I'm thinking of a number between 1 and 100. You have 7 tries to guess what it is.\n";
 
-    int min { 1 };
-    int max { 100 };
-    int randomNumber { Random::get(min, max) };
+    constexpr int min { 1 };
+    constexpr int max { 100 };
+    const int randomNumber { Random::get(min, max) };
+    constexpr int maxTries { 7 };
     int guess {};
 
-    for (int tries { 1 }; tries <= 7; ++tries) {
+    for (int tries { 1 }; tries <= maxTries; ++tries) {
         std::cout << "Guess #" << tries << ": ";
         std::cin >> guess;
 
