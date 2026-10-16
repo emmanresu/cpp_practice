@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include "Hi-Lo.hpp"
 
 #undef NDEBUG           // Make sure that assert triggers even if we compile in release mode
 
@@ -98,6 +99,6 @@ void Q2() {
 }
 
 int main() {    
-    Q2();
+    Q3();       
 	return 0;
 }
