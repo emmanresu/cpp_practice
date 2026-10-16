@@ -5,7 +5,9 @@
 void HiLo() {
     std::cout << "Let's play a game. I'm thinking of a number between 1 and 100. You have 7 tries to guess what it is.\n";
 
-    int randomNumber { Random::get(1, 100) };
+    int min { 1 };
+    int max { 100 };
+    int randomNumber { Random::get(min, max) };
     int guess {};
 
     for (int tries { 1 }; tries <= 7; ++tries) {
@@ -33,5 +35,6 @@ void Q3() {
         std::cout << "Would you like to play again (y/n)? ";
         std::cin >> play;
     }
+    std::cout << "Thank you for playing.\n";
     
 }
