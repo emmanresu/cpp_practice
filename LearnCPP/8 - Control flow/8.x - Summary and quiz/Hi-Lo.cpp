@@ -15,7 +15,7 @@ void HiLo() {
 
     for (int tries { 1 }; tries <= maxTries; ++tries) {
         bool validGuess { false };
-        
+
         while (!validGuess) {
             std::cout << "Guess #" << tries << ": ";
             std::cin >> guess;
@@ -41,12 +41,24 @@ void HiLo() {
 }
 
 void Q3() {
-    char play { 'y' };
+    // bool play { true };
+    char keepPlaying { 'y' };
 
-    while (play == 'y') {
+    while (keepPlaying == 'y') {
         HiLo();
-        std::cout << "Would you like to play again (y/n)? ";
-        std::cin >> play;
+        bool validInput { false }; 
+
+        while (!validInput) {
+            std::cout << "Would you like to play again (y/n)? ";
+            std::cin >> keepPlaying;
+            if (std::cin.fail() || (keepPlaying != 'y' && keepPlaying != 'n')) {
+                std::cout << "Invalid input. Enter y (yes) and n (no) only.\n";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                validInput = true;
+            }
+        }
     }
     std::cout << "Thank you for playing.\n";
 }
