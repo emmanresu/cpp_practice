@@ -18,8 +18,8 @@ int main() {
     Degrees degrees{};
     std::cin >> degrees;
 
+
     Radians radians { convertToRadians(degrees) };
     std::cout << degrees << " degrees is " << radians << " radians.\n";
-
     return 0;
 }
