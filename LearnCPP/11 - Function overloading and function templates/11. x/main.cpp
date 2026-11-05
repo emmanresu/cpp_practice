@@ -1,4 +1,5 @@
 #include <iostream>
+#include <type_traits>
 
 template <typename T>
 T add(T a, T b) {
@@ -10,14 +11,20 @@ T mult(T a, int b) {
     return a * b;
 }
 
+// using this one for the solution
 template <typename T, typename S>
 auto sub(T a, S b) {
     return a - b;
 }
 
-
 // or this instead of above^
 // auto sub(auto a, auto b) {
+//     return a - b;
+// }
+
+// equivalent to this one from above^^ and can be further broken down under the hood
+// template <typename T, typename S>
+// typename std::common_type<T, S>::type sub(T a, S b) {
 //     return a - b;
 // }
 
