@@ -16,12 +16,11 @@ consteval int goo(int c) {
     return c;
 }
 
-constexpr int foo(int b) {
-    constexpr int b2 { 3 };
+consteval int foo(int b) {
+    // constexpr int b2 { b };
 
-    return goo(b2);
+    return goo(b);
 }
-
 
 int main() {
     // int x { foo(5) };
@@ -30,10 +29,12 @@ int main() {
     // std::cout << x << '\n';
     // std::cout << y << '\n';
 
-    constexpr int a { 5 };
-    std::cout << foo(a) << '\n';
-    constexpr int testValue { 10 };
-    std::cout << plusTen(testValue);
+    // constexpr int a { 5 };
+    // std::cout << foo(a) << '\n';
+    // constexpr int testValue { 10 };
+    // std::cout << plusTen(testValue);
 
+    constexpr int val { foo(10) };
+    std::cout << val << '\n';
     return 0;
 }
