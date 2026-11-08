@@ -5,8 +5,9 @@
 
 // logic can be optimized (exact number of array size should be declared, we have excess allocation)
 // pre-calculate the distance traveled of ball using array and consteval
+template <int ArraySize>
 consteval auto heightReference() {
-    std::array<double, 1000> height {};
+    std::array<double, ArraySize> height {};
     int seconds { 0 };
     double currentHeight { maximumHeight };
     double prevHeight { currentHeight };
@@ -58,7 +59,7 @@ void calcBallHeightOptimized(auto hReference, double towerHeight) {
 }
 
 int main() {
-    constexpr auto heightRef { heightReference() };
+    constexpr auto heightRef { heightReference<ArraySize>() };
     calcBallHeightOptimized(heightRef, getTowerHeight());
 
     // learncppSolution();
