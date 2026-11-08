@@ -1,4 +1,5 @@
 #include <iostream>
+#include "constants.hpp"
 
 // gets tower height from user and returns it
 double getTowerHeight() {
@@ -10,8 +11,7 @@ double getTowerHeight() {
 
 // Returns ball height from ground after "seconds" seconds
 double calculateBallHeight(double towerHeight, int seconds) {
-	double gravity{ 9.8 };
-
+    
 	// Using formula: [ s = u * t + (a * t^2) / 2 ], here u(initial velocity) = 0
 	double distanceFallen{ (gravity * (seconds * seconds)) / 2.0 };
 	double currentHeight{ towerHeight - distanceFallen };
