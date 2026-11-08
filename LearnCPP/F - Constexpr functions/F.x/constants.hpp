@@ -2,5 +2,6 @@
 #define CONTANTS_HPP
 
 constexpr double gravity { 9.8 };
+constexpr double maximumHeight { 385'000'000 };
 
 #endif
