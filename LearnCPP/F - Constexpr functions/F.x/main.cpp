@@ -3,8 +3,9 @@
 #include "constants.hpp"
 #include "learncppSolution.hpp"
 
-// logic can be optimized (exact number of array size should be declared, we have excess allocation)
-// pre-calculate the distance traveled of ball using array and consteval
+// > logic can be optimized (exact number of array size should be declared, we have excess allocation)
+// > pre-calculate the distance traveled of the ball and inserting it on an array during compile-time 
+// > we set a limit of the distance (385 000 00 meters "earth to moon distance"i)
 template <int ArraySize>
 consteval auto heightReference() {
     std::array<double, ArraySize> height {};
@@ -22,8 +23,7 @@ consteval auto heightReference() {
     return height;
 }
 
-// we can just pre-calculate the distance fallen at compile time
-// values are stored in an array and we just move the pointer forward when (it) does not go to zero
+
 void calcBallHeight(double gravity, double towerHeight) {
     int seconds { 0 };
     double currentBallHeight { towerHeight };
@@ -41,6 +41,12 @@ void calcBallHeight(double gravity, double towerHeight) {
     }
 }
 
+// > the function uses the pre-compiled array of pre-calculated ball distance travelled
+// > the optimization trick for this function is to leverage the pre-caluclated values and just do subtraction until the 
+//      entered value becomes or exceeds 0 (towards negative)
+// > we enter a value and the function looks at the index 0 of the pre-compiled array, it does a subtraction of the entered 
+//       value and the first array value, if the difference does not exceed zero (towards negative), move the pointer of the
+//       array 1 times to the right and repeat the process until the differences becomes or if it exceeds zero (towards negative)
 void calcBallHeightOptimized(auto hReference, double towerHeight) {
     int seconds { 0 };
     const double currentBallHeight { towerHeight };
