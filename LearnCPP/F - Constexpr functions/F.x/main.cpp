@@ -64,11 +64,13 @@ void calcBallHeightOptimized(auto hReference, double towerHeight) {
     }
 }
 
+
 int main() {
     constexpr auto heightRef { heightReference<ArraySize>() };
-    calcBallHeightOptimized(heightRef, getTowerHeight());
 
     // learncppSolution();
+    // calcBallHeight(gravity, getTowerHeight());
+    calcBallHeightOptimized(heightRef, getTowerHeight());
     
     return 0;
 }
