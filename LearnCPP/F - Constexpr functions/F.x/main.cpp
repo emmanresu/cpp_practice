@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <chrono>
 #include "constants.hpp"
 #include "learncppSolution.hpp"
 
@@ -25,6 +26,8 @@ consteval auto heightReference() {
 
 
 void calcBallHeight(double gravity, double towerHeight) {
+    auto start { std::chrono::steady_clock::now() };
+
     int seconds { 0 };
     double currentBallHeight { towerHeight };
     while (true) {
@@ -39,6 +42,11 @@ void calcBallHeight(double gravity, double towerHeight) {
             break;
         }   
     }
+
+    auto end { std::chrono::steady_clock::now() };
+    std::cout << "Time elapsed: "
+            << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
+            << " microseconds\n";
 }
 
 // > the function uses the pre-compiled array of pre-calculated ball distance travelled
@@ -48,6 +56,8 @@ void calcBallHeight(double gravity, double towerHeight) {
 //       value and the first array value, if the difference does not exceed zero (towards negative), move the pointer of the
 //       array 1 times to the right and repeat the process until the differences becomes or if it exceeds zero (towards negative)
 void calcBallHeightOptimized(auto hReference, double towerHeight) {
+    auto start { std::chrono::steady_clock::now() };
+
     int seconds { 0 };
     const double currentBallHeight { towerHeight };
     auto itHReference { hReference.begin() };
@@ -62,6 +72,11 @@ void calcBallHeightOptimized(auto hReference, double towerHeight) {
             break;
         }
     }
+
+    auto end { std::chrono::steady_clock::now() };
+    std::cout << "Time elapsed: "
+            << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
+            << " microseconds\n";
 }
 
 
@@ -71,6 +86,6 @@ int main() {
     // learncppSolution();
     // calcBallHeight(gravity, getTowerHeight());
     calcBallHeightOptimized(heightRef, getTowerHeight());
-    
+
     return 0;
 }
