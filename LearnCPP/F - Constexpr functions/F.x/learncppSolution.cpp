@@ -4,6 +4,7 @@
 // gets tower height from user and returns it
 double getTowerHeight() {
 	std::cout << "Enter the height of the tower in meters: ";
+	std::cout.flush();
 	double towerHeight{};
 	std::cin >> towerHeight;
 	return towerHeight;

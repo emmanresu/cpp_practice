@@ -81,6 +81,9 @@ void calcBallHeightOptimized(const auto hReference, double towerHeight) {
 
 
 int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
     constexpr auto heightRef { heightReference<ArraySize>() };
     char continue_program { 'y' };
 
@@ -90,6 +93,7 @@ int main() {
         calcBallHeightOptimized(heightRef, getTowerHeight());
 
         std::cout << "Continue program (y/n)? ";
+        std::cout.flush();
         std::cin >> continue_program;
         if (continue_program != 'y') {
             break;
