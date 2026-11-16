@@ -55,7 +55,7 @@ void calcBallHeight(double gravity, double towerHeight) {
 // > we enter a value and the function looks at the index 0 of the pre-compiled array, it does a subtraction of the entered 
 //       value and the first array value, if the difference does not exceed zero (towards negative), move the pointer of the
 //       array 1 times to the right and repeat the process until the differences becomes or if it exceeds zero (towards negative)
-void calcBallHeightOptimized(auto hReference, double towerHeight) {
+void calcBallHeightOptimized(const auto hReference, double towerHeight) {
     auto start { std::chrono::steady_clock::now() };
 
     int seconds { 0 };
@@ -82,10 +82,19 @@ void calcBallHeightOptimized(auto hReference, double towerHeight) {
 
 int main() {
     constexpr auto heightRef { heightReference<ArraySize>() };
+    char continue_program { 'y' };
 
-    // learncppSolution();
-    // calcBallHeight(gravity, getTowerHeight());
-    calcBallHeightOptimized(heightRef, getTowerHeight());
+    while (continue_program == 'y') {
+        // learncppSolution();                                          // not used no time stamps
+        // calcBallHeight(gravity, getTowerHeight());                  
+        calcBallHeightOptimized(heightRef, getTowerHeight());
 
+        std::cout << "Continue program (y/n)? ";
+        std::cin >> continue_program;
+        if (continue_program != 'y') {
+            break;
+        }
+    }
+    
     return 0;
 }
